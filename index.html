@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PREP NOVA Login</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#cae2ea,#e5e8ec);
+    overflow:hidden;
+}
+
+/* Decorative circles */
+.circle{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(233, 251, 134, 0.927);
+}
+
+.circle1{
+    width:220px;
+    height:220px;
+    top:40px;
+    left:70px;
+}
+
+.circle2{
+    width:160px;
+    height:160px;
+    bottom:50px;
+    right:90px;
+}
+
+.circle3{
+    width:100px;
+    height:100px;
+    top:200px;
+    right:300px;
+}
+
+.container{
+    width:420px;
+    padding:40px;
+    background:rgb(239, 233, 196);
+    border-radius:25px;
+    backdrop-filter:blur(15px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.4);
+}
+
+.top-image{
+    text-align:center;
+}
+
+.top-image img{
+    width:110px;
+    margin-bottom:10px;
+}
+
+.logo{
+    text-align:center;
+    color:rgba(26, 1, 1, 0.922);
+    font-size:40px;
+    font-weight:bold;
+}
+
+.subtitle{
+    text-align:center;
+    color:#130101e6;
+    margin-top:8px;
+    margin-bottom:15px;
+}
+
+.quote{
+    text-align:center;
+    color:rgba(35, 3, 3, 0.859);
+    font-style:italic;
+    margin-bottom:25px;
+}
+
+.input-box{
+    margin-bottom:18px;
+}
+
+.input-box input{
+    width:100%;
+    padding:15px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:rgb(255, 255, 255);
+    color:rgb(15, 1, 1);
+    font-size:15px;
+}
+
+.input-box input::placeholder{
+    color:#000204;
+}
+
+.options{
+    text-align:right;
+    margin-bottom:20px;
+}
+
+.options a{
+    color:rgba(26, 4, 4, 0.997);
+    text-decoration:none;
+}
+
+.options a:hover{
+    text-decoration:underline;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#d4d006f3;
+    color:rgb(19, 2, 2);
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#d3d007f4;
+}
+
+.footer{
+    text-align:center;
+    color:rgba(12, 1, 1, 0.952);
+    margin-top:20px;
+}
+
+.footer a{
+    color:#010f11e8;
+    text-decoration:none;
+}
+
+/* Floating Books */
+.book1{
+    position:absolute;
+    top:100px;
+    left:120px;
+    width:100px;
+}
+
+.book2{
+    position:absolute;
+    bottom:80px;
+    right:130px;
+    width:90px;
+}
+
+@media(max-width:500px){
+.container{
+    width:90%;
+}
+.book1,.book2{
+    display:none;
+}
+}
+.input-box select{
+    width:100%;
+    padding:15px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:rgba(255,255,255,0.18);
+    color:white;
+    font-size:15px;
+}
+
+.input-box select option{
+    color:black;
+}
+
+</style>
+
+</head>
+<script>
+function loginUser() {
+
+    let user = document.getElementById("userInput").value;
+    let password = document.getElementById("password").value;
+
+    if (user.trim() === "" || password.trim() === "") {
+        alert("Please enter your Phone Number/Email ID and Password.");
+        return;
+    }
+
+    window.location.href = "studentinfro.html";
+}
+</script>
+<body>
+    
+
+<div class="circle circle1"></div>
+<div class="circle circle2"></div>
+<div class="circle circle3"></div>
+
+<!-- Decorative Books -->
+<img class="book1"
+src="https://cdn-icons-png.flaticon.com/512/2436/2436874.png">
+
+<img class="book2"
+src="https://cdn-icons-png.flaticon.com/512/3976/3976626.png">
+
+<div class="container">
+
+    <div class="top-image">
+        <img src="logo.jpeg"
+        alt="CONCORE logo">
+    </div>
+
+    <div class="logo">PREP NOVA</div>
+
+    <div class="subtitle">
+        Competitive Exam Preparation Portal
+    </div>
+
+    <div class="quote">
+        "Success is the sum of small efforts repeated every day."
+    </div>
+
+    
+
+    <div class="input-box">
+    <select id="loginMethod" onchange="changePlaceholder()">
+        <option value="phone">📱 Phone Number</option>
+        <option value="email">📧 Email ID</option>
+    </select>
+</div>
+
+<div class="input-box">
+    <input type="text" id="userInput" placeholder="📱Enter Phone Number">
+</div>
+
+    <div class="input-box">
+    <input type="password" id="password" placeholder="🔒 Password">
+</div>
+
+    <div class="options"> 
+        
+        <a href="forgotpassword.html">Forgot Password?</a>
+     </div>
+    <button onclick="loginUser()">LOGIN</button>
+    <div class="footer">
+    Don't have an account?
+    <a href="signup.html">Sign Up</a>
+</div>
+
+</div>
+<script>
+function changePlaceholder() {
+    let method = document.getElementById("loginMethod").value;
+    let input = document.getElementById("userInput");
+
+    if (method === "phone") {
+        input.placeholder = "📱Enter Phone Number";
+    } else {
+        input.placeholder = "📧Enter Email ID";
+    }
+}
+</script>
+
+</body>
+</html>

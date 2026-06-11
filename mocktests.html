@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PREP NOVA - Mock Tests</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#cae2ea,#e5e8ec);
+    padding:40px;
+}
+
+h1{
+    text-align:center;
+    color:#222;
+    margin-bottom:40px;
+    font-size:45px;
+}
+
+.card-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgb(239,233,196);
+    border-radius:25px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.3);
+}
+
+.card h2{
+    color:#222;
+    margin-bottom:20px;
+}
+
+.status{
+    color:#777;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.back-btn{
+    display:block;
+    margin:50px auto 0;
+    width:220px;
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    background:#d4d006f3;
+    color:black;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#c5c105;
+}
+.profile-icon{
+    position:fixed;
+    top:15px;
+    left:15px;
+    width:45px;
+    height:45px;
+    background:#fff;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    z-index:1000;
+}
+
+.profile-panel{
+    position:fixed;
+    top:0;
+    left:-350px;
+    width:300px;
+    height:100%;
+    background:white;
+    box-shadow:2px 0 10px rgba(0,0,0,0.2);
+    padding:20px;
+    transition:0.3s;
+    z-index:999;
+}
+
+.profile-panel.active{
+    left:0;
+}
+
+.profile-panel h2{
+    margin-bottom:15px;
+}
+
+.profile-panel input, .profile-panel select{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:10px;
+    border:1px solid #ccc;
+}
+
+.save-btn{
+    width:100%;
+    padding:10px;
+    background:#d4d006f3;
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.35);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    backdrop-filter:blur(4px);
+}
+
+.popup-content{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    width:300px;
+}
+
+.checkmark{
+    width:85px;
+    height:85px;
+    margin:auto;
+    border-radius:50%;
+    background:linear-gradient(135deg,#1e90ff,#00bcd4);
+    color:white;
+    font-size:45px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 10px 25px rgba(0,123,255,0.4);
+}
+</style>
+</head>
+<body>
+    <div class="profile-icon" onclick="toggleProfile()">
+    👤
+</div>
+<div class="profile-panel" id="profilePanel">
+    <h2>👤 My Profile</h2>
+
+    <input type="file" accept="image/*" onchange="loadImage(event)">
+
+    <img id="preview" style="width:100px;height:100px;border-radius:50%;margin:10px auto;display:block;">
+
+    <input type="text" id="userName" placeholder="Name">
+    <input type="text" id="userPhone" placeholder="Phone">
+    <input type="text" id="userEmail" placeholder="Email">
+
+    <select id="userClass">
+        <option>11</option>
+        <option>12</option>
+        <option>Dropper</option>
+    </select>
+
+    <select id="userExam">
+        <option>JEE Main</option>
+        <option>JEE Advanced</option>
+        <option>NEET</option>
+        <option>WBJEE</option>
+        <option>IISER</option>
+        <option>NISER</option>
+    </select>
+
+    <button class="save-btn" onclick="saveProfile()">Save</button>
+</div>
+
+<h1>📝 Mock Tests</h1>
+
+<div class="card-container">
+
+<div class="card">
+    <h2>📘 WBJEE</h2>
+    <div class="status">Coming Soon</div>
+</div>
+
+<div class="card">
+    <h2>📗 JEE MAINS</h2>
+    <div class="status">Coming Soon</div>
+</div>
+
+<div class="card">
+    <h2>📙 JEE ADVANCED</h2>
+    <div class="status">Coming Soon</div>
+</div>
+
+<div class="card">
+    <h2>🩺 NEET</h2>
+    <div class="status">Coming Soon</div>
+</div>
+
+<div class="card">
+    <h2>🧪 IISER</h2>
+    <div class="status">Coming Soon</div>
+</div>
+
+<div class="card">
+    <h2>🔬 NISER</h2>
+    <div class="status">Coming Soon</div>
+</div>
+
+<div class="card">
+    <h2>🎥 VIDEO SOLUTIONS</h2>
+    <div class="status">Coming Soon</div>
+</div>
+
+</div>
+
+<button class="back-btn"
+onclick="window.location.href='nextpage.html'">
+⬅ Back
+</button>
+
+<script>
+function toggleProfile(){
+    document.getElementById("profilePanel").classList.toggle("active");
+}
+
+function saveProfile(){
+
+    localStorage.setItem("name", document.getElementById("userName").value);
+    localStorage.setItem("phone", document.getElementById("userPhone").value);
+    localStorage.setItem("email", document.getElementById("userEmail").value);
+    localStorage.setItem("class", document.getElementById("userClass").value);
+    localStorage.setItem("exam", document.getElementById("userExam").value);
+
+    // SHOW POPUP
+    document.getElementById("successPopup").style.display = "flex";
+
+    setTimeout(() => {
+        document.getElementById("successPopup").style.display = "none";
+    }, 2000);
+}
+
+window.onload = function(){
+    document.getElementById("userName").value = localStorage.getItem("name") || "";
+    document.getElementById("userPhone").value = localStorage.getItem("phone") || "";
+    document.getElementById("userEmail").value = localStorage.getItem("email") || "";
+    document.getElementById("userClass").value = localStorage.getItem("class") || "11";
+    document.getElementById("userExam").value = localStorage.getItem("exam") || "";
+}
+</script>
+<div id="successPopup" class="popup">
+    <div class="popup-content">
+        <div class="checkmark">✔</div>
+        <h2>Profile Saved Successfully</h2>
+        <p>Updated successfully</p>
+    </div>
+</div>
+
+</body>
+</html>
